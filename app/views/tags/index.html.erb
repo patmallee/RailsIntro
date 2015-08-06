@@ -1,11 +1,15 @@
 <h1>Browse Tags</h1>
 
 <ul>
-  <%= @tag.each do |tag| %>
+  <% @tag.each do |tag| %>
     <li>
       <%= link_to tag.name, tags_path(tag) %><br />
-      <p>--<%= link_to "delete", tag_path(tag), method: :delete, data: {confirm: "Really delete this tag?"} %>
-      </p> 
+      
+      <% if logged_in? %>
+    	<p>--<%= link_to "delete", tag_path(tag), method: :delete, data: {confirm: "Really delete this tag?"} %>
+      	</p> 
+      <% end %>
+
     </li>
   <% end %>
 </ul>
